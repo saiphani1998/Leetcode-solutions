@@ -19,27 +19,27 @@ Example 1:
     to the starting pixel.
 *
 * Approach: Write a function to fill in the color at one pixel.
-    * Then recursively call the fill function on to the 4 directions of the pixel
-    * This might put into infinite loop if the visisted nodes are not tracked.
-    * So mainain a visited matrix to check if the pixel is visited earlier or not.
+    * Then recursively call the fill function on to the 4 directions of the pixel.
 * */
 
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        int[][] visited = new int[image.length][image[0].length];
-        fill (image, sr, sc, image[sr][sc],newColor, visited);
+        if (image[sr][sc] == newColor) {
+            return image;
+        }
+        fill (image, sr, sc, image[sr][sc],newColor);
         return image;
     }
-    public void fill(int[][] image, int row, int column, int oldColor, int newColor, int[][] visited) {
-        if (row<0 || row >= image.length || column<0 || column >= image[0].length
-                || image[row][column] != oldColor || visited[row][column] == 1) {
+    public void fill(int[][] image, int row, int column, int oldColor, int newColor) {
+        if (row<0 || row >= image.length || column<0 || column >= image[0].length 
+                || image[row][column] != oldColor) {
             return;
         }
         image[row][column] = newColor;
-        visited[row][column] = 1;
-        fill (image, row-1, column, oldColor,newColor, visited);
-        fill (image, row+1, column, oldColor,newColor, visited);
-        fill (image, row, column-1, oldColor,newColor, visited);
-        fill (image, row, column+1, oldColor,newColor, visited);
+        fill (image, row-1, column, oldColor,newColor);
+        fill (image, row+1, column, oldColor,newColor);
+        fill (image, row, column-1, oldColor,newColor);
+        fill (image, row, column+1, oldColor,newColor);
     }
 }
+
