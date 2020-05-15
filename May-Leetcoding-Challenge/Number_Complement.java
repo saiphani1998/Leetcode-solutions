@@ -13,7 +13,7 @@
 *
 * Approach: Using bit manupulations, check the LSB value
     if it is 1 then don't add anything to the sum,
-    if it is 0
+    if it is 0 then add the value of 2 raised to the position of that bit
 * */
 
 class Solution {
