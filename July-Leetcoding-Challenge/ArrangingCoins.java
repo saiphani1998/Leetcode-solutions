@@ -26,7 +26,7 @@ class Solution {
         int mid = 0;
         while (start <= end) {
             mid = (start + end) >>> 1;
-            if ((0.5 * mid * mid + 0.5 * mid) <= n) {
+            if ((mid * (mid+1)/2) <= n) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
