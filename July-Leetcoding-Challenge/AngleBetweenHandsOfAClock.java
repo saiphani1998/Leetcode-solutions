@@ -27,13 +27,15 @@ class Solution {
             return 0;
         }
 
-        if (h == 12)
+        if (h == 12) {
             h = 0;
+        }
         if (m == 60) {
             m = 0;
             h += 1;
-            if(h>12)
+            if(h>12) {
                 h = h-12;
+            }
         }
         double hour_angle = (0.5 * (h*60 + m));
         double minute_angle = (6*m);
