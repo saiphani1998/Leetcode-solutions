@@ -17,5 +17,6 @@ class Solution {
 
         int pow = (int) (Math.log(num) / Math.log(4));
         return (num==Math.pow(4, pow));
+        /* return num > 0 && (num & (num - 1)) == 0 && (num & 0x55555555) != 0; */
     }
 }
