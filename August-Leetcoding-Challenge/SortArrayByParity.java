@@ -13,12 +13,12 @@
 
 class Solution {
     public int[] sortArrayByParity(int[] A) {
-        int evenIndex = 0, val;
-        for (int currentIndex=0; currentIndex<A.length; currentIndex++) {
+        int evenIndex = 0, temp;
+        for (int currentIndex=0; currentIndex < A.length; currentIndex++) {
             if ((A[currentIndex] & 1) != 1) {
-                val=A[evenIndex];
-                A[evenIndex]=A[currentIndex];
-                A[currentIndex]=val;
+                temp = A[evenIndex];
+                A[evenIndex] = A[currentIndex];
+                A[currentIndex] = temp;
                 evenIndex++;
             }
         }
