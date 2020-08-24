@@ -26,22 +26,36 @@
  */
 class Solution {
     public int sumOfLeftLeaves(TreeNode root) {
-        if (root == null) {
+//        if (root == null) {
+//            return 0;
+//        }
+//
+//        int ans = 0;
+//        if (root.left != null) {
+//            if (root.left.left == null && root.left.right == null) {
+//                ans += root.left.val;
+//            } else {
+//                ans += sumOfLeftLeaves(root.left);
+//            }
+//        }
+//        if (root.right != null) {
+//            ans += sumOfLeftLeaves(root.right);
+//        }
+//
+//        return ans;
+        return helper(root, false);
+    }
+
+    private int helper(TreeNode root, boolean isLeft){
+        if(root == null) return 0;
+        /* This node is a leaf, if it's a left leaf, we return the value
+          if it's a right leaf we return 0 since right leaf doesn't count */
+        if(root.left == null && root.right == null){
+            if(isLeft){
+                return root.val;
+            }
             return 0;
         }
-
-        int ans = 0;
-        if (root.left != null) {
-            if (root.left.left == null && root.left.right == null) {
-                ans += root.left.val;
-            } else {
-                ans += sumOfLeftLeaves(root.left);
-            }
-        }
-        if (root.right != null) {
-            ans += sumOfLeftLeaves(root.right);
-        }
-
-        return ans;
+        return helper(root.left, true) + helper(root.right, false);
     }
 }
